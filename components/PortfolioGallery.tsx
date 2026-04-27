@@ -186,15 +186,31 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-ink-900 rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl"
             >
-              <div className="flex justify-between items-start gap-4 p-4 sm:p-6 border-b border-white/10">
-                <div className="min-w-0">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{active.title}</h2>
-                  <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-3">
-                    {active.description}
-                  </p>
-                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-brand to-brand-hover text-white text-xs sm:text-sm font-semibold rounded-full shadow-lg shadow-brand/40">
-                    {active.tag}
-                  </span>
+              <motion.div
+                layout
+                transition={{ layout: { duration: 0.35, ease: "easeInOut" } }}
+                className="flex justify-between items-start gap-4 p-4 sm:p-6 border-b border-white/10"
+              >
+                <div className="min-w-0 flex-1">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={active.slug}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                    >
+                      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                        {active.title}
+                      </h2>
+                      <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-3">
+                        {active.description}
+                      </p>
+                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-brand to-brand-hover text-white text-xs sm:text-sm font-semibold rounded-full shadow-lg shadow-brand/40">
+                        {active.tag}
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
                 <button
                   type="button"
@@ -204,7 +220,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                 >
                   <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </button>
-              </div>
+              </motion.div>
 
               <div className="px-4 sm:px-6 py-6">
                 <div
