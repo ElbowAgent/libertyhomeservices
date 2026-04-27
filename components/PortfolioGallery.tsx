@@ -328,8 +328,12 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                   </button>
 
                   <div
-                    className="absolute top-0 bottom-0 pointer-events-none cursor-ew-resize z-20"
-                    style={{ left: `${pos}%`, transform: "translateX(-50%)" }}
+                    className="absolute top-0 bottom-0 pointer-events-none cursor-ew-resize z-20 transition-opacity duration-300"
+                    style={{
+                      left: `${pos}%`,
+                      transform: "translateX(-50%)",
+                      opacity: pos <= 0.1 || pos >= 99.9 ? 0 : 1,
+                    }}
                   >
                     <div
                       className="h-full w-[6px] drop-shadow-[0_0_14px_rgba(233,117,36,1)]"
