@@ -294,38 +294,40 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                     />
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      animateTo(0);
-                    }}
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onTouchStart={(e) => e.stopPropagation()}
-                    className={`absolute top-3 left-3 sm:top-4 sm:left-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
-                      pos <= 50
-                        ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
-                        : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
-                    }`}
-                  >
-                    Before
-                  </button>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      animateTo(100);
-                    }}
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onTouchStart={(e) => e.stopPropagation()}
-                    className={`absolute top-3 right-3 sm:top-4 sm:right-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
-                      pos > 50
-                        ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
-                        : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
-                    }`}
-                  >
-                    After
-                  </button>
+                  <div className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        animateTo(0);
+                      }}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      className={`px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
+                        pos <= 50
+                          ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
+                          : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
+                      }`}
+                    >
+                      Before
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        animateTo(100);
+                      }}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      className={`px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
+                        pos > 50
+                          ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
+                          : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
+                      }`}
+                    >
+                      After
+                    </button>
+                  </div>
 
                   <div
                     className="absolute top-0 bottom-0 pointer-events-none cursor-ew-resize z-20 transition-opacity duration-300"
