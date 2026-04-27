@@ -355,9 +355,9 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                         onMouseDown={(e) => e.stopPropagation()}
                         onTouchStart={(e) => e.stopPropagation()}
                         aria-label="Previous project"
-                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 backdrop-blur-md hover:bg-white/20 transition-all duration-300 flex items-center justify-center hover:scale-110 border border-white/20 z-30"
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-black/40 backdrop-blur-md hover:bg-white/20 transition-all duration-300 flex items-center justify-center hover:scale-110 border border-white/20 z-30"
                       >
-                        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9 text-white" />
                       </button>
                       <button
                         type="button"
@@ -368,9 +368,9 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                         onMouseDown={(e) => e.stopPropagation()}
                         onTouchStart={(e) => e.stopPropagation()}
                         aria-label="Next project"
-                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 backdrop-blur-md hover:bg-white/20 transition-all duration-300 flex items-center justify-center hover:scale-110 border border-white/20 z-30"
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-black/40 backdrop-blur-md hover:bg-white/20 transition-all duration-300 flex items-center justify-center hover:scale-110 border border-white/20 z-30"
                       >
-                        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9 text-white" />
                       </button>
                     </>
                   )}
