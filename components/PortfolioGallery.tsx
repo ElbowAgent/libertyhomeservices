@@ -38,7 +38,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
       if (switchTimer.current) clearTimeout(switchTimer.current);
       setTransitioning(true);
       switchTimer.current = setTimeout(() => {
-        setPos(100);
+        setPos(0);
         setActiveIndex((i) => (i === null ? 0 : compute(i)));
         switchTimer.current = null;
       }, 320);
@@ -54,7 +54,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
 
   useEffect(() => {
     if (activeIndex === null) return;
-    setPos(100);
+    setPos(0);
     const fadeTimer = setTimeout(() => setTransitioning(false), 260);
     const startDelay = 800;
     const duration = 2200;
@@ -71,7 +71,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
       }
       const t = Math.min(1, elapsed / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      setPos(100 - eased * 100);
+      setPos(eased * 100);
       if (t < 1) {
         revealRaf.current = requestAnimationFrame(tick);
       } else {
@@ -137,7 +137,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
             key={p.slug}
             type="button"
             onClick={() => {
-              setPos(100);
+              setPos(0);
               setActiveIndex(i);
             }}
             initial={{ opacity: 0, y: 20 }}
@@ -232,7 +232,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                   )}
                   <div
                     className="absolute inset-0 pointer-events-none"
-                    style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+                    style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
                   >
                     <Image
                       key={`before-${active.slug}`}
@@ -249,12 +249,12 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setPos(100);
+                      setPos(0);
                     }}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className={`absolute top-3 right-3 sm:top-4 sm:right-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
-                      pos >= 50
+                    className={`absolute top-3 left-3 sm:top-4 sm:left-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
+                      pos <= 50
                         ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
                         : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
                     }`}
@@ -265,12 +265,12 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setPos(0);
+                      setPos(100);
                     }}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className={`absolute top-3 left-3 sm:top-4 sm:left-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
-                      pos < 50
+                    className={`absolute top-3 right-3 sm:top-4 sm:right-4 z-30 px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold rounded-full uppercase tracking-wider transition-all duration-300 ${
+                      pos > 50
                         ? "bg-gradient-to-r from-brand to-brand-hover text-white shadow-lg shadow-brand/50 scale-105"
                         : "bg-black/70 backdrop-blur-sm text-white hover:bg-black/90"
                     }`}
