@@ -22,6 +22,8 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
   const imageBoxRef = useRef<HTMLDivElement | null>(null);
   const switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const revealRaf = useRef<number | null>(null);
+  const posRef = useRef(pos);
+  posRef.current = pos;
   const active = activeIndex !== null ? projects[activeIndex] : null;
 
   const stopReveal = useCallback(() => {
@@ -30,6 +32,37 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
       revealRaf.current = null;
     }
   }, []);
+
+  const animateTo = useCallback(
+    (target: number) => {
+      stopReveal();
+      const startPos = posRef.current;
+      const distance = Math.abs(target - startPos);
+      if (distance < 0.5) {
+        setPos(target);
+        return;
+      }
+      const duration = (distance / 100) * 2200;
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        if (dragging.current) {
+          revealRaf.current = null;
+          return;
+        }
+        const elapsed = now - startTime;
+        const t = Math.min(1, elapsed / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setPos(startPos + (target - startPos) * eased);
+        if (t < 1) {
+          revealRaf.current = requestAnimationFrame(tick);
+        } else {
+          revealRaf.current = null;
+        }
+      };
+      revealRaf.current = requestAnimationFrame(tick);
+    },
+    [stopReveal],
+  );
 
   const close = useCallback(() => setActiveIndex(null), []);
   const scheduleSwitch = useCallback(
@@ -265,7 +298,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setPos(0);
+                      animateTo(0);
                     }}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
@@ -281,7 +314,7 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setPos(100);
+                      animateTo(100);
                     }}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
