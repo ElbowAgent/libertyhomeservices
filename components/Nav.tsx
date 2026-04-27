@@ -8,8 +8,8 @@ import { Menu, X, Facebook } from "lucide-react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About Us" },
-  { href: "/#services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/#contact", label: "Contact Us" },
 ];
 
 const FACEBOOK_URL = "https://www.facebook.com/libertyhomeservicescalgary";
@@ -53,10 +53,10 @@ export default function Nav() {
               <Facebook className="w-5 h-5" strokeWidth={2.5} fill="currentColor" />
             </a>
             <Link
-              href="/#contact"
+              href="/estimate"
               className="px-6 xl:px-8 py-2.5 xl:py-3 bg-gradient-to-r from-brand to-brand-hover text-white rounded-full font-semibold shadow-lg shadow-brand/30 hover:shadow-xl hover:shadow-brand/50 transition-all duration-300 text-[15px] whitespace-nowrap"
             >
-              Contact Us
+              Get Estimate
             </Link>
           </div>
 
@@ -94,11 +94,11 @@ export default function Nav() {
                 <Facebook className="w-5 h-5" strokeWidth={2.5} fill="currentColor" />
               </a>
               <Link
-                href="/#contact"
+                href="/estimate"
                 onClick={() => setOpen(false)}
                 className="inline-block bg-gradient-to-r from-brand to-brand-hover text-white px-6 py-3 rounded-full font-semibold text-[15px] transition-colors"
               >
-                Contact Us
+                Get Estimate
               </Link>
             </li>
           </ul>

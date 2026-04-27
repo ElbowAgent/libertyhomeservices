@@ -12,6 +12,7 @@ export default function Contact() {
       style={{ backgroundImage: "url('/images/cta-bg.jpg')" }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/90 to-ink-900/70" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-brand/30 via-brand/10 to-transparent mix-blend-overlay" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

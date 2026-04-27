@@ -5,16 +5,18 @@ import { Mail, Phone, MapPin, User } from "lucide-react";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About Us" },
-  { href: "/#services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/estimate", label: "Get Estimate" },
   { href: "/#contact", label: "Contact" },
 ];
 
 const services = [
-  { href: "/#services", label: "Junk Removal" },
-  { href: "/#services", label: "Hauling Services" },
-  { href: "/#services", label: "Snow Removal" },
-  { href: "/#services", label: "View All Services" },
+  { href: "/estimate?service=junk", label: "Junk Removal" },
+  { href: "/estimate?service=construction", label: "Construction Cleanup" },
+  { href: "/estimate?service=snow", label: "Snow Removal" },
+  { href: "/estimate?service=gutters", label: "Gutter Cleaning" },
+  { href: "/estimate?service=light-demo", label: "Light Demolition" },
+  { href: "/estimate?service=single-items", label: "Single Items" },
 ];
 
 export default function Footer() {

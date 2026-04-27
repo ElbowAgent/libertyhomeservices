@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import ContactForm from "./ContactForm";
-import { Calendar, ArrowRight, Star, MapPin } from "lucide-react";
+import InstantEstimateCard from "./InstantEstimateCard";
+import { Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -16,7 +15,7 @@ export default function Hero() {
       }}
     >
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-12 w-full py-20 sm:py-32">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[5fr_6fr] gap-8 lg:gap-14 items-center">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -43,10 +42,19 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl"
+              className="text-lg sm:text-xl md:text-2xl text-white/90 mb-4 leading-relaxed max-w-2xl"
             >
               Locally owned and operated since 2022. We deliver exceptional junk removal, hauling,
               and snow removal services with fair, transparent pricing and reliable customer care.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="text-brand font-semibold text-base sm:text-lg mb-8"
+            >
+              Get a free estimate in under two minutes.
             </motion.p>
 
             <motion.div
@@ -55,20 +63,13 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap gap-4"
             >
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-brand to-brand-hover shadow-xl shadow-brand/30 hover:shadow-2xl hover:shadow-brand/50 text-white text-lg font-semibold rounded-full px-8 py-4 transition-all duration-300 hover:-translate-y-1"
-              >
-                <Calendar className="w-6 h-6" />
-                Get a Quote
-              </Link>
-              <Link
-                href="/portfolio"
+              <a
+                href="tel:5872889794"
                 className="inline-flex items-center gap-2 bg-ink-900 border-2 border-white text-white hover:bg-white hover:text-ink-900 rounded-full px-8 py-4 text-lg font-semibold transition-all duration-300"
               >
-                See Our Work
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+                <Phone className="w-5 h-5" />
+                Call / Text
+              </a>
             </motion.div>
 
             <motion.div
@@ -77,15 +78,6 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-10 flex flex-wrap items-center gap-6"
             >
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1 text-brand">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <span className="text-white font-semibold">4.9/5</span>
-                <span className="text-white/60">10+ Google Reviews</span>
-              </div>
               <div className="flex items-center gap-2 text-white/70">
                 <MapPin size={16} className="text-brand" />
                 <span>Locally Owned &amp; Operated</span>
@@ -97,9 +89,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:justify-self-end w-full max-w-[480px] justify-self-center"
+            className="lg:justify-self-end w-full max-w-[600px] justify-self-center"
           >
-            <ContactForm />
+            <InstantEstimateCard />
           </motion.div>
         </div>
       </div>
